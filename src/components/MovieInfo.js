@@ -1,6 +1,11 @@
 import React from "react";
+import { useQuery } from '@tanstack/react-query';
+import { getPosts } from '../api';
 
 const MovieInfo = () => {
+    const movieListResult = useQuery({ queryKey: ['movieList'], queryFn: getPosts });
+    console.log(movieListResult.moiveList);
+
     return (
         <div>
             {/* <img src="" /> */}
@@ -15,6 +20,7 @@ const MovieInfo = () => {
                 </div>
                 <p className="description"></p>
             </div>
+
         </div>
     );
 };
