@@ -1,10 +1,15 @@
-import React from "react";
+import {React} from "react";
 import { useQuery } from '@tanstack/react-query';
 import { getPosts } from '../api';
 
 const MovieInfo = () => {
-    const movieListResult = useQuery({ queryKey: ['movieList'], queryFn: getPosts });
-    console.log(movieListResult.moiveList);
+    const { data, dataUpdatedAt } = useQuery({ queryKey: ['movieList'], queryFn: getPosts });
+
+    let result = data
+
+    console.log(result.results);
+
+   
 
     return (
         <div>
