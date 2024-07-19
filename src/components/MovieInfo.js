@@ -1,33 +1,30 @@
-import {React} from "react";
+import React from "react";
 import { useQuery } from '@tanstack/react-query';
 import { getPosts } from '../api';
 
+import MovieItem from './MovieItem'
+
 const MovieInfo = () => {
-    const { data, dataUpdatedAt } = useQuery({ queryKey: ['movieList'], queryFn: getPosts });
+    const { data, isLoading, isError } = useQuery({ queryKey: ['movieList'], queryFn: getPosts });
 
-    let result = data
+    //데이터를 불러오는 동안 로딩 상태 처리
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
-    console.log(result.results);
+    let list = data.results
 
-   
+    // console.log(result.data?.results[0].release_date);
+    console.log(data);
 
     return (
-        <div>
-            {/* <img src="" /> */}
-            <div>
-                <p className="title"></p>
-                <div>
-                    <span className="genre"></span> |
-                    <span className="country"></span> |
-                    <span className="year"></span> |
-                    <span className="duration"></span> |
-                    <span className="rating"></span>
-                </div>
-                <p className="description"></p>
-            </div>
-
-        </div>
+       <>
+        {list.map((item) => (
+            <MovieItem poster_path={item.poster_path} title={item.title} year={item.release_date} genre_ids={item.genre_ids} key={item.id}/>
+        ))}
+       </>
     );
 };
+
 
 export default MovieInfo
