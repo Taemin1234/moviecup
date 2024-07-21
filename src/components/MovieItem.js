@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieItem = ({ title, year, poster_path, genre_ids }) => {
+const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
 	
 	const genres = [
 		{ id: 28, name: "Action" },
@@ -37,12 +37,11 @@ const MovieItem = ({ title, year, poster_path, genre_ids }) => {
                 <p className="title">{title}</p>
                 <div>
                     <span className="genre">{genreNames}</span> |
-                    <span className="country"></span> |
                     <span className="year">{year}</span> |
-                    <span className="duration"></span> |
+                    <span className="language"></span> |
                     <span className="rating"></span>
                 </div>
-                <p className="description"></p>
+                <p className="description">{overview}</p>
             </div>
 
         </div>
