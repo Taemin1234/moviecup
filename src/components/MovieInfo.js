@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useRef, useCallback } from "react";
 import { useInfiniteQuery  } from '@tanstack/react-query';
+import * as MI from '../style/style'
 import { getPosts} from '../api';
 
 import MovieItem from './MovieItem'
+
 
 const MovieInfo = () => {
     const {
@@ -51,36 +53,36 @@ const MovieInfo = () => {
     console.log(list);
 
     return (
-        <div>
-        {list.map((item, index) => {
-            if (list.length === index + 1) {
-                return (
-                    <div ref={lastMovieElementRef} key={item.id}>
+        <MI.BoxWrap as="ul">
+            {list.map((item, index) => {
+                if (list.length === index + 1) {
+                    return (
+                        <div ref={lastMovieElementRef} key={item.id}>
+                            <MovieItem
+                                poster_path={item.poster_path}
+                                title={item.title}
+                                year={item.release_date}
+                                genre_ids={item.genre_ids}
+                                overview={item.overview}
+                            />
+                            <p>ref 포함</p>
+                        </div>
+                    );
+                } else {
+                    return (
                         <MovieItem
                             poster_path={item.poster_path}
                             title={item.title}
                             year={item.release_date}
                             genre_ids={item.genre_ids}
                             overview={item.overview}
+                            key={item.id}
                         />
-                        <p>ref 포함</p>
-                    </div>
-                );
-            } else {
-                return (
-                    <MovieItem
-                        poster_path={item.poster_path}
-                        title={item.title}
-                        year={item.release_date}
-                        genre_ids={item.genre_ids}
-                        overview={item.overview}
-                        key={item.id}
-                    />
-                );
-            }
-        })}
-        {isFetchingNextPage && <div>Loading more...</div>}
-    </div>
+                    );
+                }
+            })}
+            {isFetchingNextPage && <div>Loading more...</div>}
+        </MI.BoxWrap>
     );
 };
 

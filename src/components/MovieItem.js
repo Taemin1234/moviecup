@@ -1,4 +1,5 @@
 import React from "react";
+import * as MI from '../style/style'
 
 const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
 	
@@ -31,7 +32,7 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
 
 
 	return (
-		<div>
+		<MI.Box as="li" bg="skyblue">
             <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt={title} />
             <div>
                 <p className="title">{title}</p>
@@ -44,7 +45,7 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
                 <p className="description">{overview}</p>
             </div>
 
-        </div>
+        </MI.Box>
 	)
 }
 
