@@ -1,7 +1,7 @@
 import React from "react";
 import * as MI from '../style/style'
 
-const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
+const MovieItem = ({ title, year, poster_path, genre_ids, overview, original_language, vote_average }) => {
 	
 	const genres = [
 		{ id: 28, name: "Action" },
@@ -23,12 +23,45 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
 		{ id: 53, name: "Thriller" },
 		{ id: 10752, name: "War" },
 		{ id: 37, name: "Western" }
-	];	
+	];
 
+	const language = [
+		{lang:'en', trans:'영어'},
+		{lang:'es', trans:'스페인어'},
+		{lang:'fr', trans:'프랑스어'},
+		{lang:'de', trans:'독일어'},
+		{lang:'it', trans:'이탈리아어'},
+		{lang:'ja', trans:'일본어'},
+		{lang:'ko', trans:'한국어'},
+		{lang:'zh', trans:'중국어'},
+		{lang:'ru', trans:'러시아어'},
+		{lang:'pt', trans:'포르투갈어'},
+		{lang:'hi', trans:'힌디어'},
+		{lang:'ar', trans:'아랍어'},
+		{lang:'bn', trans:'벵골어'},
+		{lang:'pl', trans:'폴란드어'},
+		{lang:'nl', trans:'네덜란드어'},
+		{lang:'tr', trans:'터키어'},
+		{lang:'sv', trans:'스웨덴어'},
+		{lang:'fi', trans:'핀란드어'},
+		{lang:'no', trans:'노르웨이어'},
+		{lang:'da', trans:'덴마크어'},
+		{lang:'cs', trans:'체코어'},
+		{lang:'el', trans:'그리스어'},
+		{lang:'he', trans:'히브리어'}
+	];
+
+	// 장르 컨버터
 	const genreNames = genre_ids.map(id => {
 		const genre = genres.find(g => g.id === id);
 		return genre ? genre.name : "Unknown";
 	});
+
+	//언어 컨버터
+	const transLang = language.find(langA => langA.lang === original_language)
+	const useLang = transLang.trans
+
+	const rating = Number(vote_average.toFixed(2))
 
 
 	return (
@@ -39,8 +72,8 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview }) => {
                 <div>
                     <span className="genre">{genreNames}</span> |
                     <span className="year">{year}</span> |
-                    <span className="language"></span> |
-                    <span className="rating"></span>
+                    <span className="language">{useLang}</span> |
+                    <span className="rating">{rating}</span>
                 </div>
                 <p className="description">{overview}</p>
             </div>

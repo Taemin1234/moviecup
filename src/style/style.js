@@ -26,8 +26,33 @@ export const BoxWrap = styled.div`
 
 // 모달창
 export const ModalWrap = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
     z-index: 999;
+`
+
+export const ModalCont = styled.div`
+    position: relative;
+    width: 500px;
+    border-radius: 15px;
+    padding: 30px 20px;
+    background-color: aliceblue;
+`
+
+export const CircleBtn = styled.button`
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
 `

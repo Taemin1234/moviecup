@@ -64,6 +64,8 @@ const MovieInfo = () => {
                                 year={item.release_date}
                                 genre_ids={item.genre_ids}
                                 overview={item.overview}
+                                original_language={item.original_language}
+                                vote_average={item.vote_average}
                             />
                             <p>ref 포함</p>
                         </div>
@@ -76,6 +78,8 @@ const MovieInfo = () => {
                             year={item.release_date}
                             genre_ids={item.genre_ids}
                             overview={item.overview}
+                            original_language={item.original_language}
+                            vote_average={item.vote_average}
                             key={item.id}
                         />
                     );
