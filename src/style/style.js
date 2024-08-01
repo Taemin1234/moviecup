@@ -1,8 +1,53 @@
 import styled from "styled-components";
 
-export const Button =styled.button`
+//check box
+export const Chkbox_wrap = styled.div`
 
+    & input {
+        display: none;
+    }
+
+    & input + label {
+        content: '';
+        display: inline-block;
+        border-radius: 10px;
+        padding: 5px 10px;
+        background-color: ${({ bg }) => bg || '#fff'};
+        color: ${({ color }) => color || '#000'};
+        border: solid 1px #000;
+        cursor: pointer;
+    }
+
+    & input:checked + label {
+        background-color: ${({ bgc }) => bgc || '#000'};
+        color: ${({ colorc }) => colorc || '#fff'};
+    }
+`
+
+//Button
+export const Buttons =styled.button`
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: ${({ bg }) => bg || '#fff'};
+    color: ${({ color }) => color || '#000'};
+    margin: ${({ margin }) => (margin ? margin : '0')};
+    border: solid 1px #000;
+    cursor: pointer;
 `;
+
+export const DelButton = styled(Buttons)`
+    position: relative;
+    padding-right: 25px;
+    cursor: default;
+
+    .close {
+        position: absolute;
+        display: block;
+        top: 7px;
+        right: 10px;
+        cursor: pointer;
+    }
+`
 
 export const Box = styled.div`
 width: 100%;
@@ -14,10 +59,6 @@ box-sizing: border-box;
 `;
 
 export const BoxWrap = styled.div`
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
@@ -55,4 +96,46 @@ export const CircleBtn = styled.button`
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+`
+
+export const Title = styled.p`
+    font-size: 30px;
+
+`
+
+export const MoList = styled.dl`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: solid 1px #000;
+
+    & dt {
+        position: relative;
+        min-width: 70px;
+        text-align: center;
+        padding-right: 30px;
+        font-size: 20px;
+
+        &:before {
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 20px;
+            background-color: #ddd;
+            top: 0; 
+            right: 15px;
+        }
+    }
+
+    & dd {
+        &.flex_area {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 7px;
+            
+        }
+    }
 `

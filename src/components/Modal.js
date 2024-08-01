@@ -1,5 +1,10 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import * as MI from '../style/style'
+import {genres, language} from '../data/data'
+
+import Button from './Button'
+import Chkbox from './Chkbox'
+import YearRange from "./YearRange";
 
 const Modal = ({ closeModal}) => {
   
@@ -17,25 +22,49 @@ const Modal = ({ closeModal}) => {
     };
   }, []);
 
+    const [selectGenre, setSelectGenre] = useState([])
+
+    const selectCheckbox = (e) => {
+      // 현재 체크된 항목
+      const gvalue = e.target.value;
+      // 체크 되었는 지 확인
+      const isChecked = e.target.checked;
+
+      setSelectGenre((prevSelectGenre) => {
+        if (isChecked) {
+          // 체크된 경우 배열에 추가
+          return [...prevSelectGenre, gvalue];
+        } else {
+          // 체크 해제된 경우 배열에서 제거
+          return prevSelectGenre.filter((item) => item !== gvalue);
+        }
+      });
+    };
+
+    console.log(selectGenre)
 
     return (
       <MI.ModalWrap>
         <MI.ModalCont>
           <MI.CircleBtn onClick={closeModal}>X</MI.CircleBtn>
-          <p>조건 검색</p>
+          <MI.Title>조건 검색</MI.Title>
           <div className="modal-content">
-            <dl>
+            <MI.MoList>
               <dt>장르</dt>
-              <dd>
-                이것저것, 요것저것
+              <dd className="flex_area">
+                {genres.map((el) => {
+                  return (
+                    <Chkbox bg={'#eee'} bgc={'#010101'} onChange={selectCheckbox} idFor={el.id} value={el.name}>{el.name}</Chkbox>
+                  )
+                })}
               </dd>
-            </dl>
-            <dl>
+            </MI.MoList>
+            <MI.MoList>
               <dt>연도</dt>
               <dd>
-                이것저것, 요것저것
+                <YearRange/>
               </dd>
-            </dl>
+            </MI.MoList>
           </div>
         </MI.ModalCont>
       </MI.ModalWrap>

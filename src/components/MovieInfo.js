@@ -67,7 +67,6 @@ const MovieInfo = () => {
                                 original_language={item.original_language}
                                 vote_average={item.vote_average}
                             />
-                            <p>ref 포함</p>
                         </div>
                     );
                 } else {

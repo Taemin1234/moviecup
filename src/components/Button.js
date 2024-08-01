@@ -1,8 +1,9 @@
 import React from 'react';
+import * as MI from '../style/style'
 
-const Button = ({children, onClick}) => {
+const Button = ({children, onClick, bg, color, margin}) => {
   return (
-    <button onClick={onClick}>{children}</button>
+    <MI.Buttons bg={bg} color={color} margin={margin} onClick={onClick}>{children}</MI.Buttons>
   );
 };
 
