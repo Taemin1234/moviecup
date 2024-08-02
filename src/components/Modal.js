@@ -22,6 +22,7 @@ const Modal = ({ closeModal}) => {
     };
   }, []);
 
+  // 장르 선택확인
     const [selectGenre, setSelectGenre] = useState([])
 
     const selectCheckbox = (e) => {
@@ -41,8 +42,6 @@ const Modal = ({ closeModal}) => {
       });
     };
 
-    console.log(selectGenre)
-
     return (
       <MI.ModalWrap>
         <MI.ModalCont>
@@ -60,9 +59,15 @@ const Modal = ({ closeModal}) => {
               </dd>
             </MI.MoList>
             <MI.MoList>
-              <dt>연도</dt>
-              <dd>
+              <dt>개봉연도</dt>
+              <dd className="flex_area">
                 <YearRange/>
+              </dd>
+            </MI.MoList>
+            <MI.MoList>
+              <dt>제작언어</dt>
+              <dd className="flex_area">
+                가보자고!
               </dd>
             </MI.MoList>
           </div>

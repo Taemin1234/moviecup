@@ -11,41 +11,46 @@ const YearRange = () => {
             years.push(i);
         }
         const handleStartYearChange = (e) => {
-            setStartYear(e.target.value);
+            //종료 연도가 없거나 종료연도보다 작거나 같은 연도를 선택했을 때 
+            if(endYear == '' || e.target.value <= endYear) {
+                setStartYear(e.target.value);
+            }
+            
         };
         const handleEndYearChange = (e) => {
+            // 시작연도가 비어있지않고 시작연도보다 크거나 같은 연도를 선택했을 때
+           if(e.target.value >= startYear && startYear !== '') {
             setEndYear(e.target.value);
+           }
         };
 
         console.log(`시작년도 : ${startYear}, end year : ${endYear}`)
         return (
-            <div>
-                <label>
-                    Start Year:
-                    <select value={startYear} onChange={handleStartYearChange}>
-                    <option value="">Select Year</option>
-                    {years.map((year) => (
-                        <option key={year} value={year}>
-                        {year}
-                        </option>
-                    ))}
-                    </select>
-                </label>
-                <label>
-                    End Year:
-                    <select value={endYear} onChange={handleEndYearChange}>
-                    <option value="">Select Year</option>
-                    {years.map((year) => (
-                        <option key={year} value={year}>
-                        {year}
-                        </option>
-                    ))}
-                    </select>
-                </label>
-                <div>
-                    Selected Year Range: {startYear} - {endYear}
-                </div>
-            </div>
+            <>
+                <MI.InputWrap>
+                    <label>
+                        <select value={startYear} onChange={handleStartYearChange}>
+                        <option value="">연도선택</option>
+                        {years.map((year) => (
+                            <option key={year} value={year}>
+                            {year}
+                            </option>
+                        ))}
+                        </select>
+                    </label>
+                    <span className="hyphen">-</span>
+                    <label>
+                        <select value={endYear} onChange={handleEndYearChange}>
+                        <option value="">연도선택</option>
+                        {years.map((year) => (
+                            <option key={year} value={year}>
+                            {year}
+                            </option>
+                        ))}
+                        </select>
+                    </label>
+                </MI.InputWrap>
+            </>
         )
 };
 

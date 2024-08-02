@@ -49,14 +49,90 @@ export const DelButton = styled(Buttons)`
     }
 `
 
+// input
+export const InputWrap = styled.div`
+    & .hyphen {
+        font-size: 20px;
+        margin: 0 15px;
+        vertical-align: top;
+    }
+
+    & select {
+        width: 150px;
+        background-color: transparent;
+        font-size: 20px;
+    }
+`
+
+// 박스 스타일
 export const Box = styled.div`
-width: 100%;
-border: solid 1px #000;
-border-radius: 10px;
-padding: 15px;
-background-color: ${({ bg }) => (bg ? bg : '#fff')};
-box-sizing: border-box;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    width: 100%;
+    border: solid 1px #000;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: ${({ bg }) => (bg ? bg : '#fff')};
+    box-sizing: border-box;
+
+    & img {
+        width: 200px;
+    }
 `;
+
+export const BoxCont = styled.div`
+    & .title {
+        margin-bottom: 20px;
+        font-size: 25px;
+        font-weight: 700;
+        word-break: keep-all;
+    }
+
+    & .genre_wrap {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        /* & .genre_li {
+            border
+        } */
+    }
+
+    & .info {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 10px;
+
+        & p {
+            position: relative;
+            padding-right: 15px;
+
+            &:before {
+                position: absolute;
+                display: block;
+                content: '';
+                width: 2px;
+                height: 16px;
+                top: 0;
+                right: 7px;
+                background-color: #d1d1d1;
+            }
+
+            &:last-child:before {
+                content: none;
+            }
+        }
+        
+    }
+
+    & .description {
+        margin-top: 15px;
+        line-height: 1.2;
+    }
+`
 
 export const BoxWrap = styled.div`
     display: grid;
@@ -64,6 +140,8 @@ export const BoxWrap = styled.div`
     gap: 15px;
     margin-top: 25px;
 `;
+
+
 
 // 모달창
 export const ModalWrap = styled.div`
@@ -108,7 +186,7 @@ export const MoList = styled.dl`
     justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     border-bottom: solid 1px #000;
 
     & dt {
