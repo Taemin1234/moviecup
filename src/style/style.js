@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 //check box
-export const Chkbox_wrap = styled.div`
+export const ChkboxWrap = styled.div`
 
     & input {
         display: none;
@@ -11,10 +11,9 @@ export const Chkbox_wrap = styled.div`
         content: '';
         display: inline-block;
         border-radius: 10px;
-        padding: 5px 10px;
+        padding: 5px 15px;
         background-color: ${({ bg }) => bg || '#fff'};
         color: ${({ color }) => color || '#000'};
-        border: solid 1px #000;
         cursor: pointer;
     }
 
@@ -25,7 +24,7 @@ export const Chkbox_wrap = styled.div`
 `
 
 //Button
-export const Buttons =styled.button`
+export const Buttons = styled.button`
     border-radius: 10px;
     padding: 5px 10px;
     background-color: ${({ bg }) => bg || '#fff'};
@@ -49,18 +48,20 @@ export const DelButton = styled(Buttons)`
     }
 `
 
-// input
-export const InputWrap = styled.div`
+// radio
+export const RadioInput = styled.div`
+
     & .hyphen {
         font-size: 20px;
         margin: 0 15px;
-        vertical-align: top;
     }
 
     & select {
         width: 150px;
-        background-color: transparent;
+        background-color: #d9d9d9;
         font-size: 20px;
+        padding: 5px 0;
+        cursor: pointer;
     }
 `
 
@@ -153,16 +154,17 @@ export const ModalWrap = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(91,91,91,0.75);
     z-index: 999;
 `
 
 export const ModalCont = styled.div`
     position: relative;
-    width: 500px;
+    width: 600px;
     border-radius: 15px;
     padding: 30px 20px;
-    background-color: aliceblue;
+    background-color: #363636;
+    color: #ededed;
 `
 
 export const CircleBtn = styled.button`
@@ -178,7 +180,8 @@ export const CircleBtn = styled.button`
 
 export const Title = styled.p`
     font-size: 30px;
-
+    font-weight: 700;
+    margin-bottom: 40px;
 `
 
 export const MoList = styled.dl`
@@ -191,10 +194,11 @@ export const MoList = styled.dl`
 
     & dt {
         position: relative;
-        min-width: 70px;
+        min-width: 120px;
+        font-weight: 700;
         text-align: center;
         padding-right: 30px;
-        font-size: 20px;
+        font-size: 24px;
 
         &:before {
             position: absolute;
@@ -212,7 +216,7 @@ export const MoList = styled.dl`
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 7px;
+            gap: 10px;
             
         }
     }

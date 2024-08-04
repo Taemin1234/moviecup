@@ -5,6 +5,7 @@ import {genres, language} from '../data/data'
 import Button from './Button'
 import Chkbox from './Chkbox'
 import YearRange from "./YearRange";
+import LanguageSel from "./LanguageSel"
 
 const Modal = ({ closeModal}) => {
   
@@ -53,7 +54,7 @@ const Modal = ({ closeModal}) => {
               <dd className="flex_area">
                 {genres.map((el) => {
                   return (
-                    <Chkbox bg={'#eee'} bgc={'#010101'} onChange={selectCheckbox} idFor={el.id} value={el.name}>{el.name}</Chkbox>
+                    <Chkbox bg={'#828282'} color={'#fff'} bgc={'#010101'} onChange={selectCheckbox} idFor={el.id} value={el.name}>{el.name}</Chkbox>
                   )
                 })}
               </dd>
@@ -67,11 +68,13 @@ const Modal = ({ closeModal}) => {
             <MI.MoList>
               <dt>제작언어</dt>
               <dd className="flex_area">
-                가보자고!
+                <LanguageSel/>
               </dd>
             </MI.MoList>
           </div>
+          <Button children='적용' bg='#ffd08b'/>
         </MI.ModalCont>
+        
       </MI.ModalWrap>
     );
   };
