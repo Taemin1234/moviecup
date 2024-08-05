@@ -159,4 +159,5 @@ export const language = [
     {lang: 'th', trans: '태국어'},
     {lang: 'tl', trans: '타갈로그어'},
     {lang: 'zu', trans: '줄루어'},
+    {lang: 'sv', trans: '스웨덴어'},
 ]

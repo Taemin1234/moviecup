@@ -1,5 +1,38 @@
 import styled from "styled-components";
 
+// header
+export const HeaderTitle = styled.h1`
+    margin: 20px 0;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+`
+
+export const Nav =styled.nav`
+    width: 100%;
+    height: 60px;
+
+    & ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        border-bottom : solid 1px #000;
+        border-top : solid 1px #000;
+
+        & li {
+            height: 100%;
+            padding: 0 15px;
+            border-left: solid 1px #000;
+            line-height: 60px;
+
+            &:last-child {
+                border-right: solid 1px #000;
+            }
+        }
+    }
+`
+
 //check box
 export const ChkboxWrap = styled.div`
 
@@ -45,6 +78,19 @@ export const DelButton = styled(Buttons)`
         top: 7px;
         right: 10px;
         cursor: pointer;
+    }
+`
+
+export const ButtonApp = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    & ${Buttons} {
+        border: none;
+        width: 130px;
+        height: 40px;
+        font-size: 18px;
     }
 `
 

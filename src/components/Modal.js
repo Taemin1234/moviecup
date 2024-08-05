@@ -71,8 +71,10 @@ const Modal = ({ closeModal}) => {
                 <LanguageSel/>
               </dd>
             </MI.MoList>
+            <MI.ButtonApp>
+              <Button children='적용' bg='#ffd08b' />
+            </MI.ButtonApp>
           </div>
-          <Button children='적용' bg='#ffd08b'/>
         </MI.ModalCont>
         
       </MI.ModalWrap>

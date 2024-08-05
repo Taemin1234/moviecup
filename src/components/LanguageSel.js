@@ -19,7 +19,7 @@ const LanguageSel = () => {
 
     return (
         <MI.RadioInput>
-            <Radio value={lang} onChange={handleLanguage} title="제작언어">
+            <Radio value={lang} onChange={handleLanguage} title="전체">
                 {langList}
             </Radio>
         </MI.RadioInput>

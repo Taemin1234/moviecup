@@ -14,9 +14,13 @@ import './App.css';
 
 const Container = styled.div`
 	width: 100%;
+  padding-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const GlobalStyle = createGlobalStyle`
+// reset css 적용
   ${reset}
   /* 이곳에 추가적인 전역 스타일을 설정 가능 */
 `;
@@ -29,15 +33,16 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <GlobalStyle />
+      <Header />
       <Container>
-        <GlobalStyle />
-        <Header />
         <IndexBox showModal={showModal}/>
         {show && <Modal closeModal={showModal} />}
         <MovieInfo/>
       </Container>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    
   );
 }
 

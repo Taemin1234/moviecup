@@ -1,11 +1,12 @@
 import React from 'react';
+import * as MI from '../style/style'
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header>
-      <h1>영화 이상형 월드컵</h1>
-      <nav>
+      <MI.HeaderTitle>영화 이상형 월드컵</MI.HeaderTitle>
+      <MI.Nav>
         {/* <ul>
           <li><Link to="/">영화 리스트</Link></li>
           <li><Link to="/hof">명예의 전당</Link></li>
@@ -16,7 +17,7 @@ const Header = () => {
           <li>명예의 전당</li>
           <li>좋아하는 영화</li>
         </ul>
-      </nav>
+      </MI.Nav>
     </header>
   );
 };
