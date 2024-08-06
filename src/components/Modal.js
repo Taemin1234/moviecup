@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import * as MI from '../style/style'
 import {genres, language} from '../data/data'
 
@@ -7,7 +7,12 @@ import Chkbox from './Chkbox'
 import YearRange from "./YearRange";
 import LanguageSel from "./LanguageSel"
 
-const Modal = ({ closeModal}) => {
+// useSelector로 redux store에 저장된 데이터를 가져온다.
+// state를 변경할 때 useDispatch로 감싸서 사용
+import { useDispatch } from 'react-redux'
+import { addGenre, removeGenre } from '../store/genreSlice'
+
+const Modal = ({ closeModal }) => {
   
   //모달창 활성화 시 스크롤 방지
   useEffect(() => {
@@ -23,25 +28,26 @@ const Modal = ({ closeModal}) => {
     };
   }, []);
 
-  // 장르 선택확인
-    const [selectGenre, setSelectGenre] = useState([])
-
+    // 장르 선택확인
+    const dispatch = useDispatch()
+    
     const selectCheckbox = (e) => {
+      
       // 현재 체크된 항목
       const gvalue = e.target.value;
       // 체크 되었는 지 확인
       const isChecked = e.target.checked;
 
-      setSelectGenre((prevSelectGenre) => {
-        if (isChecked) {
-          // 체크된 경우 배열에 추가
-          return [...prevSelectGenre, gvalue];
-        } else {
-          // 체크 해제된 경우 배열에서 제거
-          return prevSelectGenre.filter((item) => item !== gvalue);
-        }
-      });
-    };
+      if (isChecked) {
+        // 체크된 경우 배열에 추가
+
+        dispatch(addGenre(gvalue));
+      } else {
+        // 체크 해제된 경우 배열에서 제거
+        dispatch(removeGenre(gvalue));
+      }
+      
+     };
 
     return (
       <MI.ModalWrap>
@@ -54,7 +60,17 @@ const Modal = ({ closeModal}) => {
               <dd className="flex_area">
                 {genres.map((el) => {
                   return (
-                    <Chkbox bg={'#828282'} color={'#fff'} bgc={'#010101'} onChange={selectCheckbox} idFor={el.id} value={el.name}>{el.name}</Chkbox>
+                    <Chkbox 
+                      bg={'#828282'} 
+                      color={'#fff'} 
+                      bgc={'#010101'} 
+                      onChange={selectCheckbox}
+                      idFor={el.id} 
+                      key={el.id}
+                      value={el.name}>
+                        {el.name}
+                    </Chkbox>
+                      
                   )
                 })}
               </dd>
