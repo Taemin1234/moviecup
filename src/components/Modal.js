@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as MI from '../style/style'
-import {genres, language} from '../data/data'
 
-import Button from './Button'
-import Chkbox from './Chkbox'
+import Button from '../layout/Button'
+import GenreCheck from './GenreCheck'
 import YearRange from "./YearRange";
 import LanguageSel from "./LanguageSel"
 
 // useSelector로 redux store에 저장된 데이터를 가져온다.
 // state를 변경할 때 useDispatch로 감싸서 사용
 import { useDispatch } from 'react-redux'
-import { addGenre, removeGenre } from '../store/genreSlice'
+import { addGenre } from '../store/genreSlice'
 
 const Modal = ({ closeModal }) => {
   
@@ -28,26 +27,17 @@ const Modal = ({ closeModal }) => {
     };
   }, []);
 
+  // GenreCheck에서 클릭된 장르 값 가져오기
+    const [getGenre, setGetGenre] = useState([])
+
     // 장르 선택확인
     const dispatch = useDispatch()
-    
-    const selectCheckbox = (e) => {
-      
-      // 현재 체크된 항목
-      const gvalue = e.target.value;
-      // 체크 되었는 지 확인
-      const isChecked = e.target.checked;
 
-      if (isChecked) {
-        // 체크된 경우 배열에 추가
-
-        dispatch(addGenre(gvalue));
-      } else {
-        // 체크 해제된 경우 배열에서 제거
-        dispatch(removeGenre(gvalue));
-      }
-      
-     };
+    const applySetting = () => {
+      // 적용 버튼을 클릭하면 redux에 저장된 데이터 반영
+      dispatch(addGenre(getGenre))
+      closeModal()
+    }
 
     return (
       <MI.ModalWrap>
@@ -58,21 +48,7 @@ const Modal = ({ closeModal }) => {
             <MI.MoList>
               <dt>장르</dt>
               <dd className="flex_area">
-                {genres.map((el) => {
-                  return (
-                    <Chkbox 
-                      bg={'#828282'} 
-                      color={'#fff'} 
-                      bgc={'#010101'} 
-                      onChange={selectCheckbox}
-                      idFor={el.id} 
-                      key={el.id}
-                      value={el.name}>
-                        {el.name}
-                    </Chkbox>
-                      
-                  )
-                })}
+                <GenreCheck setGetGenre={setGetGenre}/>
               </dd>
             </MI.MoList>
             <MI.MoList>
@@ -88,7 +64,7 @@ const Modal = ({ closeModal }) => {
               </dd>
             </MI.MoList>
             <MI.ButtonApp>
-              <Button children='적용' bg='#ffd08b' />
+              <Button onClick={applySetting} children='적용' bg='#ffd08b' />
             </MI.ButtonApp>
           </div>
         </MI.ModalCont>

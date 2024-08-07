@@ -1,6 +1,6 @@
 import React from 'react';
 import * as MI from '../style/style'
-import Button from './Button'
+import Button from '../layout/Button'
 
 // useSelector로 redux store에 저장된 데이터를 가져온다.
 // state를 변경할 때 useDispatch로 감싸서 사용
@@ -11,6 +11,8 @@ import { removeGenre } from '../store/genreSlice'
 const IndexBox = ({showModal}) => {
   const dispatch = useDispatch()
   let seletedGenre = useSelector((state) => state.genre)
+
+  console.log(seletedGenre)
   
   return (
     <>

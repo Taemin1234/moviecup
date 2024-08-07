@@ -5,7 +5,7 @@ const genreSlice = createSlice({
   initialState : [],
   reducers : {
     addGenre(state, action) {
-      return [...state, action.payload]
+      return [...action.payload]
     },
     removeGenre(state, action) {
       return state.filter((item) => item !== action.payload )

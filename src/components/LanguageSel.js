@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { language } from '../data/data'
 import * as MI from '../style/style'
 
-import Radio from './Radio'
+import Radio from '../layout/Radio'
 
 const LanguageSel = () => {
     const [lang, setLang] = useState('')
