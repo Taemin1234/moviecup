@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { language } from '../data/data'
 import * as MI from '../style/style'
 
 import Radio from '../layout/Radio'
 
-const LanguageSel = () => {
+const LanguageSel = ({setGetLang}) => {
     const [lang, setLang] = useState('')
 
     const handleLanguage = (e) => {
@@ -16,6 +16,10 @@ const LanguageSel = () => {
         {lang.trans}
         </option>
     ))
+    
+    useEffect(() => {
+        setGetLang(lang);
+    },[lang])
 
     return (
         <MI.RadioInput>

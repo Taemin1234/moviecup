@@ -10,6 +10,8 @@ import LanguageSel from "./LanguageSel"
 // state를 변경할 때 useDispatch로 감싸서 사용
 import { useDispatch } from 'react-redux'
 import { addGenre } from '../store/genreSlice'
+import { addStartYear, addEndYear } from '../store/yearSlice'
+import { addLang } from '../store/langSlice'
 
 const Modal = ({ closeModal }) => {
   
@@ -27,8 +29,10 @@ const Modal = ({ closeModal }) => {
     };
   }, []);
 
-  // GenreCheck에서 클릭된 장르 값 가져오기
+  // 각 컴포넌트에서 클릭된 값 가져오기
     const [getGenre, setGetGenre] = useState([])
+    const [getYear, setGetYear] = useState({'startY' : '', 'endY' : ''})
+    const [getLang, setGetLang] = useState()
 
     // 장르 선택확인
     const dispatch = useDispatch()
@@ -36,6 +40,9 @@ const Modal = ({ closeModal }) => {
     const applySetting = () => {
       // 적용 버튼을 클릭하면 redux에 저장된 데이터 반영
       dispatch(addGenre(getGenre))
+      dispatch(addStartYear(getYear.startY))
+      dispatch(addEndYear(getYear.endY))
+      dispatch(addLang(getLang))
       closeModal()
     }
 
@@ -54,13 +61,13 @@ const Modal = ({ closeModal }) => {
             <MI.MoList>
               <dt>개봉연도</dt>
               <dd className="flex_area">
-                <YearRange/>
+                <YearRange setGetYear={setGetYear}/>
               </dd>
             </MI.MoList>
             <MI.MoList>
               <dt>제작언어</dt>
               <dd className="flex_area">
-                <LanguageSel/>
+                <LanguageSel setGetLang={setGetLang}/>
               </dd>
             </MI.MoList>
             <MI.ButtonApp>

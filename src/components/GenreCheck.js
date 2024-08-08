@@ -6,8 +6,6 @@ import Chkbox from '../layout/Chkbox'
 const GenreCheck = ({setGetGenre}) => {
     const [selectGenre, setSelectGenre] = useState([])
 
-    // console.log(selectGenre)
-
     const selectCheckbox = (e) => {
         // 현재 체크된 항목
         const gvalue = e.target.value;

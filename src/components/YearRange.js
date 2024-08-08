@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as MI from '../style/style'
 
 import Radio from '../layout/Radio'
 
-const YearRange = () => {
+const YearRange = ({setGetYear}) => {
     const [startYear, setStartYear] = useState('');
     const [endYear, setEndYear] = useState('');
     // 연도 목록 생성
@@ -32,7 +32,10 @@ const YearRange = () => {
         </option>
     ))
 
-    console.log(`시작년도 : ${startYear}, end year : ${endYear}`)
+    useEffect(() => {
+        setGetYear({'startY' : startYear, 'endY' : endYear})
+    },[startYear, endYear])
+
     return (
         <MI.RadioInput>
             <Radio value={startYear} onChange={handleStartYearChange} title="연도선택" children={yearSel}/>
