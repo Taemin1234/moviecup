@@ -17,7 +17,7 @@ const IndexBox = ({showModal}) => {
   
   return (
     <>
-      <MI.Box>
+      <MI.IdxBox bg={'skyblue'}>
         <Button onClick={showModal}>조건설정</Button>
         {selectedGenre.map((el, i) => {
           return <MI.DelButton key={i}>{el} <span className='close'>X</span></MI.DelButton>
@@ -26,8 +26,8 @@ const IndexBox = ({showModal}) => {
           <p>{startYear||'시작연도'}</p> - <p>{endYear || '끝연도'}</p>
         </div>
         <p>{selectLang}</p>
-        <Button>월드컵 시작!</Button>
-      </MI.Box>
+        <Button bg='#ffd08b' color='#fff' className='btn_start'>월드컵 시작!</Button>
+      </MI.IdxBox>
     </>
   );
 };

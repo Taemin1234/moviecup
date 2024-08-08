@@ -64,7 +64,8 @@ export const Buttons = styled.button`
     color: ${({ color }) => color || '#000'};
     margin: ${({ margin }) => (margin ? margin : '0')};
     border: solid 1px #000;
-    cursor: pointer;
+    cursor: ${({ cursor }) => cursor || 'pointer'};
+
 `;
 
 export const DelButton = styled(Buttons)`
@@ -117,7 +118,6 @@ export const Box = styled.div`
     gap: 15px;
     align-items: flex-start;
     width: 100%;
-    border: solid 1px #000;
     border-radius: 10px;
     padding: 15px;
     background-color: ${({ bg }) => (bg ? bg : '#fff')};
@@ -127,6 +127,18 @@ export const Box = styled.div`
         width: 200px;
     }
 `;
+
+export const IdxBox = styled(Box)`
+    position: relative;
+    padding-bottom: 30px;
+
+    & .btn_start {
+        position: absolute;
+        border: none;
+        right: 0;
+        bottom: 0;
+    }
+`
 
 export const BoxCont = styled.div`
     & .title {
@@ -142,9 +154,6 @@ export const BoxCont = styled.div`
         flex-wrap: wrap;
         gap: 10px;
 
-        /* & .genre_li {
-            border
-        } */
     }
 
     & .info {

@@ -25,7 +25,7 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview, original_lan
                 <p className="title">{title}</p>
                 <div className="genre_wrap">
                     {genreNames.map((el, i) => {
-                        return <MI.Buttons as="span" className="genre_li" key={i}>{el}</MI.Buttons>
+                        return <MI.Buttons as="span" cursor={'default'} key={i}>{el}</MI.Buttons>
                     })}
                 </div>
                 <div className="info">
