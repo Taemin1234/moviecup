@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from "react";
-import { useInfiniteQuery  } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import * as MI from '../style/style'
-import { getPosts} from '../api';
+import { getPosts } from '../api';
 
 import MovieItem from './MovieItem'
 
@@ -46,10 +46,8 @@ const MovieInfo = () => {
         return <div>Error...</div>;
     }
 
-    // let list = data?.results ?? [];
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
-    // console.log(result.data?.results[0].release_date);
     console.log(list);
 
     return (

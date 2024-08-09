@@ -130,14 +130,29 @@ export const Box = styled.div`
 
 export const IdxBox = styled(Box)`
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 
-    & .btn_start {
+    & Button:last-child {
         position: absolute;
         border: none;
-        right: 0;
-        bottom: 0;
+        right: 15px;
+        bottom: 10px;
     }
+`
+
+export const FlexStart = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+`
+
+export const FlexColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
 `
 
 export const BoxCont = styled.div`

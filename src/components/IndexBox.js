@@ -18,15 +18,21 @@ const IndexBox = ({showModal}) => {
   return (
     <>
       <MI.IdxBox bg={'skyblue'}>
-        <Button onClick={showModal}>조건설정</Button>
-        {selectedGenre.map((el, i) => {
-          return <MI.DelButton key={i}>{el} <span className='close'>X</span></MI.DelButton>
-        })}
-        <div>
-          <p>{startYear||'시작연도'}</p> - <p>{endYear || '끝연도'}</p>
-        </div>
-        <p>{selectLang}</p>
-        <Button bg='#ffd08b' color='#fff' className='btn_start'>월드컵 시작!</Button>
+        <MI.FlexStart>
+          <Button onClick={showModal}>조건설정</Button>
+          <MI.FlexColumn>
+            <div>
+              {selectedGenre.map((el, i) => {
+                return <MI.DelButton key={i}>{el} <span className='close'>X</span></MI.DelButton>
+              })}
+            </div>
+            <MI.FlexStart>
+              <p>{startYear||'시작연도'}</p> - <p>{endYear || '끝연도'}</p>
+            </MI.FlexStart>
+            <p>{selectLang}</p>
+          </MI.FlexColumn>
+        </MI.FlexStart>
+        <Button bg='#ffd08b' color='#fff'>월드컵 시작!</Button>
       </MI.IdxBox>
     </>
   );
