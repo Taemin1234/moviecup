@@ -5,7 +5,6 @@ import { getPosts } from '../api';
 
 import MovieItem from './MovieItem'
 
-
 const MovieInfo = () => {
     const {
         data,
@@ -48,7 +47,7 @@ const MovieInfo = () => {
 
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
-    console.log(list);
+    // console.log(list);
 
     return (
         <MI.BoxWrap as="ul">
