@@ -1,11 +1,17 @@
 import React, { useRef, useCallback } from "react";
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSelector } from 'react-redux';
 import * as MI from '../style/style'
 import { getPosts } from '../api';
 
 import MovieItem from './MovieItem'
 
 const MovieInfo = () => {
+    //redux 값 가져오기
+    let with_genres = useSelector((state) => state.genre)
+    // let {startYear, endYear} = useSelector((state) => state.year)
+    let with_original_language = useSelector((state) => state.language)
+
     const {
         data,
         isLoading,
@@ -14,8 +20,12 @@ const MovieInfo = () => {
         hasNextPage,
         isFetchingNextPage
     } = useInfiniteQuery({
-        queryKey: ['movieList'],
-        queryFn: ({ pageParam = 1 }) => getPosts({ pageParam }),
+        queryKey: ['movieList', with_genres, with_original_language],
+        queryFn: ({ pageParam = 1 }) => getPosts({ 
+            pageParam,
+            withGenres: with_genres,
+            withOriginalLanguage: with_original_language,
+        }),
         getNextPageParam: (lastPage, allPages) => {
             const nextPage = lastPage.page + 1;
             return nextPage <= lastPage.total_pages ? nextPage : undefined;
