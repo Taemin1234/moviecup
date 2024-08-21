@@ -1,4 +1,5 @@
 import React from 'react';
+import { genres, language } from '../data/data'
 import * as MI from '../style/style'
 import Button from '../layout/Button'
 
@@ -11,25 +12,32 @@ const IndexBox = ({showModal}) => {
   let {startYear, endYear} = useSelector((state) => state.year)
   let selectLang = useSelector((state) => state.language)
 
-  console.log(selectedGenre)
-  console.log(startYear, endYear)
-  console.log(selectLang)
-  
+  // selectedGenre가 문자열로 반환되어 숫자형으로 변경
+  const selGenreNum = selectedGenre.map(Number)
+
+  // 장르 코드를 글자로 치환
+  // genres 배열의 id 값이 selGenreNum 배열에 포함된 항목만 필터링
+  // 필터링된 항목의 name 값을 추출
+  const genreRes = genres.filter(g => selGenreNum.includes(g.id)).map(g => g.name); 
+
+  // 언어 코드를 글자로 치환
+  const langRes = language.filter(g => selectLang.includes(g.lang)).map(g => g.trans); 
+
   return (
     <>
       <MI.IdxBox bg={'skyblue'}>
         <MI.FlexStart>
           <Button onClick={showModal}>조건설정</Button>
           <MI.FlexColumn>
-            <div>
-              {selectedGenre.map((el, i) => {
-                return <MI.DelButton key={i}>{el} <span className='close'>X</span></MI.DelButton>
-              })}
-            </div>
             <MI.FlexStart>
-              <p>{startYear||'시작연도'}</p> - <p>{endYear || '끝연도'}</p>
+              {genreRes.map((el, i) => {
+                return <MI.Buttons key={i} cursor={'default'}>{el}</MI.Buttons>
+              })}
             </MI.FlexStart>
-            <p>{selectLang}</p>
+            <MI.FlexStart>
+              <p>{startYear||'모든연도'}</p> - <p>{endYear || '모든연도'}</p>
+            </MI.FlexStart>
+            <p>{langRes}</p>
           </MI.FlexColumn>
         </MI.FlexStart>
         <Button bg='#ffd08b' color='#fff'>월드컵 시작!</Button>

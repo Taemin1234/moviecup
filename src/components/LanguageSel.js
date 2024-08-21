@@ -12,7 +12,7 @@ const LanguageSel = ({setGetLang}) => {
     }
 
     const langList = language.map((lang) => (
-        <option key={lang.lang} value={lang.trans}>
+        <option key={lang.lang} value={lang.lang}>
         {lang.trans}
         </option>
     ))

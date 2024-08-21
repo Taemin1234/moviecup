@@ -9,7 +9,8 @@ import MovieItem from './MovieItem'
 const MovieInfo = () => {
     //redux 값 가져오기
     let with_genres = useSelector((state) => state.genre)
-    // let {startYear, endYear} = useSelector((state) => state.year)
+    let start_year = useSelector((state) => state.year.startYear)
+    let end_year = useSelector((state) => state.year.endYear)
     let with_original_language = useSelector((state) => state.language)
 
     const {
@@ -20,11 +21,13 @@ const MovieInfo = () => {
         hasNextPage,
         isFetchingNextPage
     } = useInfiniteQuery({
-        queryKey: ['movieList', with_genres, with_original_language],
+        queryKey: ['movieList', with_genres, with_original_language, start_year, end_year],
         queryFn: ({ pageParam = 1 }) => getPosts({ 
             pageParam,
             withGenres: with_genres,
             withOriginalLanguage: with_original_language,
+            startYear: start_year,
+            endYear: end_year,
         }),
         getNextPageParam: (lastPage, allPages) => {
             const nextPage = lastPage.page + 1;
@@ -57,7 +60,7 @@ const MovieInfo = () => {
 
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
-    // console.log(list);
+    console.log(list);
 
     return (
         <MI.BoxWrap as="ul">

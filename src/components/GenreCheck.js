@@ -40,7 +40,7 @@ const GenreCheck = ({setGetGenre}) => {
                     onChange={selectCheckbox}
                     idFor={el.id} 
                     key={el.id}
-                    value={el.name}>
+                    value={el.id}>
                     {el.name}
                 </Chkbox>
                 )

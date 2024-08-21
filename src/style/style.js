@@ -68,20 +68,6 @@ export const Buttons = styled.button`
 
 `;
 
-export const DelButton = styled(Buttons)`
-    position: relative;
-    padding-right: 25px;
-    cursor: default;
-
-    .close {
-        position: absolute;
-        display: block;
-        top: 7px;
-        right: 10px;
-        cursor: pointer;
-    }
-`
-
 export const ButtonApp = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -132,7 +118,7 @@ export const IdxBox = styled(Box)`
     position: relative;
     padding-bottom: 40px;
 
-    & Button:last-child {
+    & > Button:last-child {
         position: absolute;
         border: none;
         right: 15px;
