@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 // header
 export const HeaderTitle = styled.h1`
@@ -17,17 +17,17 @@ export const Nav =styled.nav`
         justify-content: center;
         align-items: center;
         height: 100%;
-        border-bottom : solid 1px #000;
-        border-top : solid 1px #000;
+        border-bottom : solid 1px #c0c0c0;
+        border-top : solid 1px #c0c0c0;
 
         & li {
             height: 100%;
             padding: 0 15px;
-            border-left: solid 1px #000;
+            border-left: solid 1px #c0c0c0;
             line-height: 60px;
 
             &:last-child {
-                border-right: solid 1px #000;
+                border-right: solid 1px #c0c0c0;
             }
         }
     }
@@ -63,10 +63,16 @@ export const Buttons = styled.button`
     background-color: ${({ bg }) => bg || '#fff'};
     color: ${({ color }) => color || '#000'};
     margin: ${({ margin }) => (margin ? margin : '0')};
-    border: solid 1px #000;
-    cursor: ${({ cursor }) => cursor || 'pointer'};
-
+    border: none;
 `;
+
+export const ButtonHover = styled(Buttons)`
+    &:hover {
+        background-color: ${({bgh}) => bgh || '#808080'};
+        color: #fff;
+        cursor: pointer;
+    }
+`
 
 export const ButtonApp = styled.div`
     display: flex;
@@ -91,7 +97,7 @@ export const RadioInput = styled.div`
 
     & select {
         width: 150px;
-        background-color: #d9d9d9;
+        background-color: #fff;
         font-size: 20px;
         padding: 5px 0;
         cursor: pointer;
@@ -106,7 +112,8 @@ export const Box = styled.div`
     width: 100%;
     border-radius: 10px;
     padding: 15px;
-    background-color: ${({ bg }) => (bg ? bg : '#fff')};
+    background-color: ${({ bg }) => (bg ? bg : '#363636')};
+    color: #ededed;
     box-sizing: border-box;
 
     & img {
@@ -114,16 +121,15 @@ export const Box = styled.div`
     }
 `;
 
+const flexsb = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+`;
+
 export const IdxBox = styled(Box)`
     position: relative;
-    padding-bottom: 40px;
-
-    & > Button:last-child {
-        position: absolute;
-        border: none;
-        right: 15px;
-        bottom: 10px;
-    }
+    ${flexsb}
 `
 
 export const FlexStart = styled.div`
@@ -188,6 +194,13 @@ export const BoxCont = styled.div`
     & .description {
         margin-top: 15px;
         line-height: 1.2;
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 11;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     }
 `
 
@@ -198,6 +211,26 @@ export const BoxWrap = styled.div`
     margin-top: 25px;
 `;
 
+export const Text1 = styled.p`
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+
+    &:last-child {
+        padding-left: 15px;
+
+        &:before {
+            position: absolute;
+            content: '';
+            width: 2px;
+            height: 18px;
+            background-color: #c0c0c0;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 5px;
+        }
+    }
+`
 
 
 // 모달창

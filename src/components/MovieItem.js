@@ -19,7 +19,7 @@ const MovieItem = ({ title, year, poster_path, genre_ids, overview, original_lan
 
 
 	return (
-		<MI.Box as="li" bg="#f1f1f1">
+		<MI.Box as="li">
             <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt={title} />
             <MI.BoxCont>
                 <p className="title">{title}</p>

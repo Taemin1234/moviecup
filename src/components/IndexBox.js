@@ -1,13 +1,12 @@
 import React from 'react';
 import { genres, language } from '../data/data'
 import * as MI from '../style/style'
-import Button from '../layout/Button'
 
 // useSelector로 redux store에 저장된 데이터를 가져온다.
 // state를 변경할 때 useDispatch로 감싸서 사용
 import { useSelector } from 'react-redux'
 
-const IndexBox = ({showModal}) => {
+const IndexBox = ({showModal, showMovieModal}) => {
   let selectedGenre = useSelector((state) => state.genre)
   let {startYear, endYear} = useSelector((state) => state.year)
   let selectLang = useSelector((state) => state.language)
@@ -25,22 +24,22 @@ const IndexBox = ({showModal}) => {
 
   return (
     <>
-      <MI.IdxBox bg={'skyblue'}>
+      <MI.IdxBox>
         <MI.FlexStart>
-          <Button onClick={showModal}>조건설정</Button>
+          <MI.ButtonHover onClick={showModal}>조건설정</MI.ButtonHover>
           <MI.FlexColumn>
             <MI.FlexStart>
               {genreRes.map((el, i) => {
-                return <MI.Buttons key={i} cursor={'default'}>{el}</MI.Buttons>
+                return <MI.Buttons key={i} bg={'gray'}>{el}</MI.Buttons>
               })}
             </MI.FlexStart>
             <MI.FlexStart>
-              <p>{startYear||'모든연도'}</p> - <p>{endYear || '모든연도'}</p>
+              <MI.Text1>{startYear||'모든연도'}</MI.Text1> - <MI.Text1>{endYear || '모든연도'}</MI.Text1>
+              <MI.Text1>{langRes}</MI.Text1>
             </MI.FlexStart>
-            <p>{langRes}</p>
           </MI.FlexColumn>
         </MI.FlexStart>
-        <Button bg='#ffd08b' color='#fff'>월드컵 시작!</Button>
+        <MI.ButtonHover bg='#ffd08b' bgh='#d4af37' color='#fff' onClick={showMovieModal}>월드컵 시작!</MI.ButtonHover>
       </MI.IdxBox>
     </>
   );

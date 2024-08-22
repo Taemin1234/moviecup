@@ -36,7 +36,7 @@ const GenreCheck = ({setGetGenre}) => {
                 <Chkbox 
                     bg={'#828282'} 
                     color={'#fff'} 
-                    bgc={'#010101'} 
+                    bgc={'#1b263b'} 
                     onChange={selectCheckbox}
                     idFor={el.id} 
                     key={el.id}

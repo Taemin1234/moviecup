@@ -9,6 +9,7 @@ import Header from './layout/Header'
 import IndexBox from './components/IndexBox';
 import MovieInfo from './components/MovieInfo';
 import Modal from '../src/components/Modal';
+import Worldcup from '../src/components/Worldcup';
 
 import './App.css';
 
@@ -23,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
 // reset css 적용
   ${reset}
   /* 이곳에 추가적인 전역 스타일을 설정 가능 */
+  body {
+    background-color: #0a1f44;
+    color: #fff;
+  }
 `;
 
 const queryClient = new QueryClient();
@@ -31,13 +36,17 @@ function App() {
   const [show, setShow] = useState(false)
   const showModal = () => setShow(!show);
 
+  const [showMovie, setShowMovie] = useState(false)
+  const showMovieModal = () => setShowMovie(!showMovie);
+
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Header />
       <Container>
-        <IndexBox showModal={showModal}/>
+        <IndexBox showModal={showModal} showMovieModal={showMovieModal} />
         {show && <Modal closeModal={showModal} />}
+        {showMovie && <Worldcup closeModal={showMovieModal} />}
         <MovieInfo/>
       </Container>
       <ReactQueryDevtools initialIsOpen={false} />
