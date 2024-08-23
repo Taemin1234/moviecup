@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
 // reset css 적용
   ${reset}
   /* 이곳에 추가적인 전역 스타일을 설정 가능 */
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
   body {
     background-color: #0a1f44;
     color: #fff;

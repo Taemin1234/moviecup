@@ -18,12 +18,18 @@ const Worldcup = ({closeModal}) => {
 
     return (
         <MI.ModalWrap>
-            <MI.ModalCont>
+            <MI.MoviecupCont>
                 <MI.CircleBtn onClick={closeModal}>X</MI.CircleBtn>
-                <MI.Title>조건 검색</MI.Title>
-                보이나?
-            </MI.ModalCont>
-        
+                <MI.Title>영화 월드컵</MI.Title>
+                <div>
+                    <a href="javascript:void(0)">
+                        왼쪽 데이터
+                    </a>
+                    <a href="javascript:void(0)">
+                        오른쪽 데이터
+                    </a>
+                </div>
+            </MI.MoviecupCont>
         </MI.ModalWrap>
     )
 }

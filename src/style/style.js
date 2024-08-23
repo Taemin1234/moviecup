@@ -310,3 +310,16 @@ export const MoList = styled.dl`
         }
     }
 `
+
+// 영화 월드컵 모달
+export const MoviecupCont = styled(ModalCont)`
+    width: 1200px;
+
+    ${CircleBtn} {
+        top: 20px;
+        right: 20px;
+        bottom: unset;
+        left: unset;
+        transform: unset;
+    }
+`
