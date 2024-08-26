@@ -4,7 +4,6 @@ import {genres, language} from '../data/data'
 
 
 const MovieItem = ({ title, year, poster_path, genre_ids, overview, original_language, vote_average }) => {
-	
 	// 장르 컨버터
 	const genreNames = genre_ids.map(id => {
 		const genre = genres.find(g => g.id === id);

@@ -1,12 +1,24 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useEffect, useState } from "react";
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as MI from '../style/style'
 import { getPosts } from '../api';
 
 import MovieItem from './MovieItem'
 
+import { addWorldcup } from '../store/worldcupSlice'
+
 const MovieInfo = () => {
+    const [choiceList, setChoiceList] = useState([])
+
+    // const dispatch = useDispatch();
+    // // choiceList가 변경될 때만 dispatch 실행
+    // useEffect(() => {
+    //     if (choiceList.length > 0) {
+    //         dispatch(addWorldcup(choiceList));
+    //     }
+    // }, [choiceList, dispatch]);
+
     //redux 값 가져오기
     let with_genres = useSelector((state) => state.genre)
     let start_year = useSelector((state) => state.year.startYear)
@@ -61,6 +73,28 @@ const MovieInfo = () => {
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
     console.log(list);
+
+    //월드컵을 위한 16개 데이터를 뽑기
+    const arrCL = [];
+    const generateList = (list) => {
+        const arrNum = [];
+        for (let i = 0; i < 16; i++) {
+            const rand = Math.floor(Math.random() * list.length);
+            if (arrNum.indexOf(rand) === -1) {
+                arrNum.push(rand);
+                arrCL.push(list[rand]);
+            } else {
+                i--;
+            }
+        }
+    };
+    
+    generateList(list);
+
+    // setChoiceList(arrCL)
+
+    console.log(arrCL)
+
 
     return (
         <MI.BoxWrap as="ul">
