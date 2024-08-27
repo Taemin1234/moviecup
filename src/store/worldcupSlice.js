@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const worldcupSlice = createSlice({
-  name : 'selWorldcup',
+  name : 'worldcup',
   initialState : [],
   reducers : {
     addWorldcup(state, action) {   

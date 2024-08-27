@@ -9,21 +9,13 @@ import MovieItem from './MovieItem'
 import { addWorldcup } from '../store/worldcupSlice'
 
 const MovieInfo = () => {
-    const [choiceList, setChoiceList] = useState([])
-
-    // const dispatch = useDispatch();
-    // // choiceList가 변경될 때만 dispatch 실행
-    // useEffect(() => {
-    //     if (choiceList.length > 0) {
-    //         dispatch(addWorldcup(choiceList));
-    //     }
-    // }, [choiceList, dispatch]);
-
     //redux 값 가져오기
     let with_genres = useSelector((state) => state.genre)
     let start_year = useSelector((state) => state.year.startYear)
     let end_year = useSelector((state) => state.year.endYear)
     let with_original_language = useSelector((state) => state.language)
+
+    const dispatch = useDispatch();
 
     const {
         data,
@@ -62,44 +54,33 @@ const MovieInfo = () => {
 
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
+    // console.log(list);
+    
     //월드컵을 위한 16개 데이터를 뽑기
-    const arrCl = [];
-    const generateList = (arr) => {
-        if (arr.length > 0) {
-            
+    useEffect(() => {
+        if (list.length > 0) {
+            const arrCl = [];
             const arrNum = [];
             for (let i = 0; i < 16; i++) {
-                const rand = Math.floor(Math.random() * arr.length);
+                const rand = Math.floor(Math.random() * list.length);
                 if (arrNum.indexOf(rand) === -1) {
                     arrNum.push(rand);
-                    arrCl.push(arr[rand]);
+                    arrCl.push(list[rand]);
                 } else {
                     i--;
                 }
             }
-            // setChoiceList(arrCl);
-        }
-    }
 
-    useEffect(() => {
-        // if (list.length > 0) {
-        //     const arrCl = [];
-        //     const arrNum = [];
-        //     for (let i = 0; i < 16; i++) {
-        //         const rand = Math.floor(Math.random() * list.length);
-        //         if (arrNum.indexOf(rand) === -1) {
-        //             arrNum.push(rand);
-        //             arrCl.push(list[rand]);
-        //         } else {
-        //             i--;
-        //         }
-        //     }
-        //     setChoiceList(arrCl);
-        // }
-        generateList(list)
-        // setChoiceList(arrCl);
+            // console.log(arrCl)
+
+            dispatch(addWorldcup(arrCl));
+        }
+
+        
     }, [list]); // list가 변경될 때만 실행
 
+    
+    
 
     //데이터를 불러오는 동안 로딩 상태 처리 (옵셔녈 체이닝으로 가능)
     if (isLoading) {
@@ -110,12 +91,6 @@ const MovieInfo = () => {
         return <div>Error...</div>;
     }
 
-    // const list = data?.pages.flatMap(page => page.results) ?? [];
-
-    console.log(list);
-    console.log(choiceList)
-
-    // console.log(arrCl)
 
 
     return (

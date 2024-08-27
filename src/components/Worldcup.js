@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+
 import * as MI from '../style/style'
+
+
 
 const Worldcup = ({closeModal}) => {
     //모달창 활성화 시 스크롤 방지
@@ -16,13 +20,19 @@ const Worldcup = ({closeModal}) => {
         };
     }, []);
 
+    let wcList = useSelector((state) => state.worldcup)
+
+    const cccc = () => {
+        console.log(wcList)
+    }
+
     return (
         <MI.ModalWrap>
             <MI.MoviecupCont>
                 <MI.CircleBtn onClick={closeModal}>X</MI.CircleBtn>
                 <MI.Title>영화 월드컵</MI.Title>
                 <div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" onClick={cccc}>
                         왼쪽 데이터
                     </a>
                     <a href="javascript:void(0)">
