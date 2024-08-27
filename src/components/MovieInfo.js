@@ -60,6 +60,46 @@ const MovieInfo = () => {
         if (node) observerElem.current.observe(node);
     }, [isLoading, isFetchingNextPage, fetchNextPage, hasNextPage]);
 
+    const list = data?.pages.flatMap(page => page.results) ?? [];
+
+    //월드컵을 위한 16개 데이터를 뽑기
+    const arrCl = [];
+    const generateList = (arr) => {
+        if (arr.length > 0) {
+            
+            const arrNum = [];
+            for (let i = 0; i < 16; i++) {
+                const rand = Math.floor(Math.random() * arr.length);
+                if (arrNum.indexOf(rand) === -1) {
+                    arrNum.push(rand);
+                    arrCl.push(arr[rand]);
+                } else {
+                    i--;
+                }
+            }
+            // setChoiceList(arrCl);
+        }
+    }
+
+    useEffect(() => {
+        // if (list.length > 0) {
+        //     const arrCl = [];
+        //     const arrNum = [];
+        //     for (let i = 0; i < 16; i++) {
+        //         const rand = Math.floor(Math.random() * list.length);
+        //         if (arrNum.indexOf(rand) === -1) {
+        //             arrNum.push(rand);
+        //             arrCl.push(list[rand]);
+        //         } else {
+        //             i--;
+        //         }
+        //     }
+        //     setChoiceList(arrCl);
+        // }
+        generateList(list)
+        // setChoiceList(arrCl);
+    }, [list]); // list가 변경될 때만 실행
+
 
     //데이터를 불러오는 동안 로딩 상태 처리 (옵셔녈 체이닝으로 가능)
     if (isLoading) {
@@ -70,30 +110,12 @@ const MovieInfo = () => {
         return <div>Error...</div>;
     }
 
-    const list = data?.pages.flatMap(page => page.results) ?? [];
+    // const list = data?.pages.flatMap(page => page.results) ?? [];
 
     console.log(list);
+    console.log(choiceList)
 
-    //월드컵을 위한 16개 데이터를 뽑기
-    const arrCL = [];
-    const generateList = (list) => {
-        const arrNum = [];
-        for (let i = 0; i < 16; i++) {
-            const rand = Math.floor(Math.random() * list.length);
-            if (arrNum.indexOf(rand) === -1) {
-                arrNum.push(rand);
-                arrCL.push(list[rand]);
-            } else {
-                i--;
-            }
-        }
-    };
-    
-    generateList(list);
-
-    // setChoiceList(arrCL)
-
-    console.log(arrCL)
+    // console.log(arrCl)
 
 
     return (
