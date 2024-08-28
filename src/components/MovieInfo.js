@@ -79,8 +79,6 @@ const MovieInfo = () => {
         
     }, [list]); // list가 변경될 때만 실행
 
-    
-    
 
     //데이터를 불러오는 동안 로딩 상태 처리 (옵셔녈 체이닝으로 가능)
     if (isLoading) {
@@ -90,8 +88,6 @@ const MovieInfo = () => {
     if (isError) {
         return <div>Error...</div>;
     }
-
-
 
     return (
         <MI.BoxWrap as="ul">
