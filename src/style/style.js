@@ -327,15 +327,20 @@ export const MoviecupCont = styled(ModalCont)`
 export const FlexWrap = styled.div`
     display: flex;
     justify-content: center;
+    gap: 20px;
 `
 
-export const selectMbox = styled.a`
+export const SelectMbox = styled.a`
     display: block;
     flex: 1;
     text-align: center;
 
     &:hover {
         opacity: 0.3;
+
+        img {
+            transform: scale(1.1);
+        }
     }
 
     .title {
@@ -346,7 +351,5 @@ export const selectMbox = styled.a`
         text-align: center;
     }
 
-    img {
-        transform: scale(1.1);
-    }
+    
 `

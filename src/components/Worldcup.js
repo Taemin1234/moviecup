@@ -7,7 +7,8 @@ const Worldcup = ({closeModal}) => {
     let wcList = useSelector((state) => state.worldcup)
 
     const [displays, setDisplays] = useState([])
-    const [winners, setWinners] =useState([])
+    const [winners, setWinners] = useState([])
+    const [movie, setMovie] = useState([])
 
     //모달창 활성화 시 스크롤 방지
     useEffect(() => {
@@ -23,22 +24,39 @@ const Worldcup = ({closeModal}) => {
         };
     }, []);
 
-   useEffect(() => {
     /* object 객체를 배열처럼 map으로 돌리기 (object.entries 사용) */
-    const oWc = Object.values(wcList)
-    const arrWc = []
+    const oWc = Object.values(wcList);
 
+    const arrWc = []
+    
     oWc.forEach((el) => {
         arrWc.push(Object.values(el))
     })
 
+   useEffect(() => {
+    
+    setMovie(arrWc)
+
     setDisplays([arrWc[0],arrWc[1]])
-    // console.log(arrWc)
+    // console.log(movie)
    }, [])
 
-   const selectedMovie = (movie) => () => {
-    setWinners(movie)
-    
+   const selectedMovie = (m) => () => {
+    if(movie.length <=2 ) {
+        if(winners.length ===0) {
+            setDisplays([m]);
+        } else {
+            let updateMovie = [...winners, m];
+            setMovie(updateMovie);
+            setDisplays([updateMovie[0], updateMovie[1]]);
+            setWinners([])
+        }
+    } else if (movie.length > 2) {
+        setWinners([...winners, m])
+        setDisplays([movie[2],movie[3]])
+        setMovie(movie.slice(2))
+    }
+    // console.log(m[10])
    }
 
    console.log(winners)
@@ -51,10 +69,10 @@ const Worldcup = ({closeModal}) => {
                 <MI.FlexWrap>
                     {displays.map(dp => {
                         return (
-                            <MI.selectMbox href="javascript:void(0)" key={dp[3]} onClick={selectedMovie(dp)}>  
+                            <MI.SelectMbox href="javascript:void(0)" key={dp[3]} onClick={selectedMovie(dp)}>  
                                 <p className="title">{dp[10]}</p>
                                 <img src={`https://image.tmdb.org/t/p/w400/${dp[8]}`} alt={dp[10]} />
-                            </MI.selectMbox>
+                            </MI.SelectMbox>
                         )
                     })}
                 </MI.FlexWrap>
