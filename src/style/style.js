@@ -313,7 +313,8 @@ export const MoList = styled.dl`
 
 // 영화 월드컵 모달
 export const MoviecupCont = styled(ModalCont)`
-    width: 1200px;
+    max-width: 1200px;
+    width: fit-content;
 
     ${CircleBtn} {
         top: 20px;
@@ -321,5 +322,31 @@ export const MoviecupCont = styled(ModalCont)`
         bottom: unset;
         left: unset;
         transform: unset;
+    }
+`
+export const FlexWrap = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const selectMbox = styled.a`
+    display: block;
+    flex: 1;
+    text-align: center;
+
+    &:hover {
+        opacity: 0.3;
+    }
+
+    .title {
+        min-height: 50px;
+        padding: 5px 10px;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    img {
+        transform: scale(1.1);
     }
 `

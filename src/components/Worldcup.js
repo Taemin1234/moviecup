@@ -7,6 +7,7 @@ const Worldcup = ({closeModal}) => {
     let wcList = useSelector((state) => state.worldcup)
 
     const [displays, setDisplays] = useState([])
+    const [winners, setWinners] =useState([])
 
     //모달창 활성화 시 스크롤 방지
     useEffect(() => {
@@ -30,34 +31,33 @@ const Worldcup = ({closeModal}) => {
     oWc.forEach((el) => {
         arrWc.push(Object.values(el))
     })
-    setDisplays(prevDp => [...prevDp, arrWc[0], arrWc[1]])
-    // setDisplays(arrWc[0],arrWc[1])
+
+    setDisplays([arrWc[0],arrWc[1]])
     // console.log(arrWc)
    }, [])
 
-//    console.log(wcList)
-   console.log(displays)
+   const selectedMovie = (movie) => () => {
+    setWinners(movie)
+    
+   }
+
+   console.log(winners)
 
     return (
         <MI.ModalWrap>
             <MI.MoviecupCont>
                 <MI.CircleBtn onClick={closeModal}>X</MI.CircleBtn>
                 <MI.Title>영화 월드컵</MI.Title>
-                <div>
+                <MI.FlexWrap>
                     {displays.map(dp => {
                         return (
-                            <a href="javascript:void(0)" key={dp[3]}>
-                                
-                                <p>{dp[10]}</p>
-                                <img src={`https://image.tmdb.org/t/p/w200/${dp[8]}`} alt={dp[10]} />
-                            </a>
+                            <MI.selectMbox href="javascript:void(0)" key={dp[3]} onClick={selectedMovie(dp)}>  
+                                <p className="title">{dp[10]}</p>
+                                <img src={`https://image.tmdb.org/t/p/w400/${dp[8]}`} alt={dp[10]} />
+                            </MI.selectMbox>
                         )
                     })}
-                    {/* <a href="javascript:void(0)" key={displays[3]}>
-                        <p>{displays[10]}</p>
-                        <img src={`https://image.tmdb.org/t/p/w300/${displays[8]}`} alt={displays[10]} />
-                     </a> */}
-                </div>
+                </MI.FlexWrap>
             </MI.MoviecupCont>
         </MI.ModalWrap>
     )
