@@ -272,7 +272,15 @@ export const Title = styled.p`
     font-weight: 700;
     margin-bottom: 40px;
 `
-
+export const SubTitle = styled.p`
+    font-size: 20px;
+    font-weight: 700;
+`
+export const TitleWrap = styled.div`
+    ${Title} {
+        margin-bottom: 0;
+    }
+`
 export const MoList = styled.dl`
     display: flex;
     justify-content: flex-start;

@@ -6,9 +6,12 @@ import * as MI from '../style/style'
 const Worldcup = ({closeModal}) => {
     let wcList = useSelector((state) => state.worldcup)
 
-    const [displays, setDisplays] = useState([])
-    const [winners, setWinners] = useState([])
+    // 매칭할 전체 영화 state
     const [movie, setMovie] = useState([])
+    // 매칭되는 state
+    const [displays, setDisplays] = useState([])
+    // 승자 state
+    const [winners, setWinners] = useState([])
 
     //모달창 활성화 시 스크롤 방지
     useEffect(() => {
@@ -26,7 +29,6 @@ const Worldcup = ({closeModal}) => {
 
     /* object 객체를 배열처럼 map으로 돌리기 (object.entries 사용) */
     const oWc = Object.values(wcList);
-
     const arrWc = []
     
     oWc.forEach((el) => {
@@ -34,9 +36,7 @@ const Worldcup = ({closeModal}) => {
     })
 
    useEffect(() => {
-    
     setMovie(arrWc)
-
     setDisplays([arrWc[0],arrWc[1]])
     // console.log(movie)
    }, [])
@@ -59,13 +59,16 @@ const Worldcup = ({closeModal}) => {
     // console.log(m[10])
    }
 
-   console.log(winners)
+   console.log(`${movie.length} / ${movie.length + winners.length * 2}`)
 
     return (
         <MI.ModalWrap>
             <MI.MoviecupCont>
                 <MI.CircleBtn onClick={closeModal}>X</MI.CircleBtn>
-                <MI.Title>영화 월드컵</MI.Title>
+                <MI.TitleWrap>
+                    <MI.Title>영화 월드컵</MI.Title>
+                    <MI.SubTitle>{movie.length} / {movie.length + winners.length * 2}</MI.SubTitle>
+                </MI.TitleWrap>
                 <MI.FlexWrap>
                     {displays.map(dp => {
                         return (
