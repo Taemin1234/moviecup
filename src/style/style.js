@@ -273,10 +273,16 @@ export const Title = styled.p`
     margin-bottom: 40px;
 `
 export const SubTitle = styled.p`
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
 `
 export const TitleWrap = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+
     ${Title} {
         margin-bottom: 0;
     }
@@ -352,12 +358,11 @@ export const SelectMbox = styled.a`
     }
 
     .title {
+        background-color: #595959;
         min-height: 50px;
         padding: 5px 10px;
         font-size: 20px;
         font-weight: 700;
         text-align: center;
     }
-
-    
 `

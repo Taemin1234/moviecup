@@ -45,6 +45,7 @@ const Worldcup = ({closeModal}) => {
     if(movie.length <=2 ) {
         if(winners.length ===0) {
             setDisplays([m]);
+            console.log('우승!')
         } else {
             let updateMovie = [...winners, m];
             setMovie(updateMovie);
