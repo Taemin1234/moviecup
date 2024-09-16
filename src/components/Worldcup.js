@@ -12,6 +12,7 @@ const Worldcup = ({closeModal}) => {
     const [displays, setDisplays] = useState([])
     // 승자 state
     const [winners, setWinners] = useState([])
+    const [top, setTop] = useState(false)
 
     //모달창 활성화 시 스크롤 방지
     useEffect(() => {
@@ -41,11 +42,18 @@ const Worldcup = ({closeModal}) => {
     // console.log(movie)
    }, [])
 
+   console.log(top)
+
+
    const selectedMovie = (m) => () => {
     if(movie.length <=2 ) {
         if(winners.length ===0) {
             setDisplays([m]);
             console.log('우승!')
+            setTop(true);
+            
+            // 우승일 때 폭죽 터지고
+            // 명예의 전당에 추가
         } else {
             let updateMovie = [...winners, m];
             setMovie(updateMovie);
@@ -60,8 +68,6 @@ const Worldcup = ({closeModal}) => {
     // console.log(m[10])
    }
 
-   console.log(`${movie.length} / ${movie.length + winners.length * 2}`)
-
     return (
         <MI.ModalWrap>
             <MI.MoviecupCont>
@@ -73,13 +79,15 @@ const Worldcup = ({closeModal}) => {
                 <MI.FlexWrap>
                     {displays.map(dp => {
                         return (
-                            <MI.SelectMbox href="javascript:void(0)" key={dp[3]} onClick={selectedMovie(dp)}>  
+                            <MI.SelectMbox href="javascript:void(0)" key={dp[3]} onClick={selectedMovie(dp)} choiceWinner = {top}>  
                                 <p className="title">{dp[10]}</p>
                                 <img src={`https://image.tmdb.org/t/p/w400/${dp[8]}`} alt={dp[10]} />
                             </MI.SelectMbox>
                         )
                     })}
+                    
                 </MI.FlexWrap>
+                {top ? <div>우승!!</div> : null}
             </MI.MoviecupCont>
         </MI.ModalWrap>
     )

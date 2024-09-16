@@ -357,6 +357,19 @@ export const SelectMbox = styled.a`
         }
     }
 
+    ${({ choiceWinner }) => 
+    choiceWinner &&
+    `
+    &:hover {
+      opacity: 1;
+      cursor:default;
+      
+      img {
+        transform: scale(1)
+      }
+    }
+  `}
+
     .title {
         background-color: #595959;
         min-height: 50px;
