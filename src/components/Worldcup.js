@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
+import Confetti from 'react-confetti'
 
 import * as MI from '../style/style'
 
@@ -42,18 +43,12 @@ const Worldcup = ({closeModal}) => {
     // console.log(movie)
    }, [])
 
-   console.log(top)
-
-
    const selectedMovie = (m) => () => {
     if(movie.length <=2 ) {
         if(winners.length ===0) {
             setDisplays([m]);
-            console.log('우승!')
+            console.log(m)
             setTop(true);
-            
-            // 우승일 때 폭죽 터지고
-            // 명예의 전당에 추가
         } else {
             let updateMovie = [...winners, m];
             setMovie(updateMovie);
@@ -85,10 +80,10 @@ const Worldcup = ({closeModal}) => {
                             </MI.SelectMbox>
                         )
                     })}
-                    
                 </MI.FlexWrap>
                 {top ? <div>우승!!</div> : null}
             </MI.MoviecupCont>
+            {top && <Confetti />}
         </MI.ModalWrap>
     )
 }

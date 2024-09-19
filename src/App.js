@@ -1,10 +1,9 @@
-import React, { useState,  useRef } from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import ReactCanvasConfetti from 'react-canvas-confetti';
 
 import Header from './layout/Header'
 import IndexBox from './components/IndexBox';
@@ -39,31 +38,6 @@ const GlobalStyle = createGlobalStyle`
 const queryClient = new QueryClient();
 
 function App() {
-  const refAnimationInstance = React.useRef(null);
-
-  const getInstance = (instance) => {
-    console.log('getInstance 호출됨:', instance);
-    refAnimationInstance.current = instance;
-  };
-
-  const makeShot = () => {
-    if (refAnimationInstance.current) {
-      refAnimationInstance.current.fire({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-    } else {
-      console.error('refAnimationInstance.current가 설정되지 않았습니다.');
-    }
-  };
-
-
-  const handleClick = () => {
-    console.log('클릭?')
-    makeShot();
-  };
-
   const [show, setShow] = useState(false)
   const showModal = () => setShow(!show);
 
@@ -75,18 +49,6 @@ function App() {
       <GlobalStyle />
       <Header />
       <Container>
-        <button onClick={handleClick}>눌러</button>
-        <ReactCanvasConfetti getInstance={getInstance}
-        style={{
-          position: 'fixed',
-          width: '100%',
-          height: '100%',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          zIndex: 9999,
-        }}
-        />
         <IndexBox showModal={showModal} showMovieModal={showMovieModal} />
         {show && <Modal closeModal={showModal} />}
         {showMovie && <Worldcup closeModal={showMovieModal} />}
