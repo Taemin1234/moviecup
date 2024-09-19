@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Confetti from 'react-confetti'
+
+import { addWinner } from '../store/winnerSlice'
 
 import * as MI from '../style/style'
 
 const Worldcup = ({closeModal}) => {
     let wcList = useSelector((state) => state.worldcup)
+
+    const dispatch = useDispatch();
 
     // 매칭할 전체 영화 state
     const [movie, setMovie] = useState([])
@@ -49,6 +53,7 @@ const Worldcup = ({closeModal}) => {
             setDisplays([m]);
             console.log(m)
             setTop(true);
+            dispatch(addWinner(m));
         } else {
             let updateMovie = [...winners, m];
             setMovie(updateMovie);
