@@ -9,8 +9,8 @@ const Header = () => {
       <MI.Nav>
         {/* <ul>
           <li><Link to="/">영화 리스트</Link></li>
-          <li><Link to="/hof">명예의 전당</Link></li>
-          <li><Link to="/like">좋아하는 영화</Link></li>
+          <li><Link to="/Hof">명예의 전당</Link></li>
+          <li><Link to="/">좋아하는 영화</Link></li>
         </ul> */}
         <ul>
           <li>영화 리스트</li>

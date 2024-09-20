@@ -10,14 +10,12 @@ import { addWorldcup } from '../store/worldcupSlice'
 
 const MovieInfo = () => {
     //redux 값 가져오기
-    let with_genres = useSelector((state) => state)
+    let with_genres = useSelector((state) => state.genre)
     let start_year = useSelector((state) => state.year.startYear)
     let end_year = useSelector((state) => state.year.endYear)
     let with_original_language = useSelector((state) => state.language)
 
     const dispatch = useDispatch();
-
-    console.log(with_genres)
 
     const {
         data,

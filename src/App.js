@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createGlobalStyle } from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
 import reset from 'styled-reset';
 
 import Header from './layout/Header'
@@ -10,6 +11,7 @@ import IndexBox from './components/IndexBox';
 import MovieInfo from './components/MovieInfo';
 import Modal from '../src/components/Modal';
 import Worldcup from '../src/components/Worldcup';
+import Hof from './components/Hof'
 
 import './App.css';
 
@@ -48,6 +50,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Header />
+      {/* <Routes>
+        <Route path="/" element={<App />}></Route>
+        <Route path="/Hof" element={<Hof />}></Route>
+      </Routes> */}
       <Container>
         <IndexBox showModal={showModal} showMovieModal={showMovieModal} />
         {show && <Modal closeModal={showModal} />}
