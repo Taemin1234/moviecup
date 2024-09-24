@@ -1,5 +1,12 @@
 import styled, {css} from "styled-components";
 
+export const Container = styled.div`
+    width: 100%;
+    padding-top: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+`
+
 // header
 export const HeaderTitle = styled.h1`
     margin: 20px 0;
@@ -210,6 +217,9 @@ export const BoxWrap = styled.div`
     gap: 15px;
     margin-top: 25px;
 `;
+export const BoxWrap4Col = styled(BoxWrap)`
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+`
 
 export const Text1 = styled.p`
     position: relative;

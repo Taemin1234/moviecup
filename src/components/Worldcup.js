@@ -47,13 +47,24 @@ const Worldcup = ({closeModal}) => {
     // console.log(movie)
    }, [])
 
+    // 해당 날짜 구하기 
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+
+    const dateString = year + '-' + month  + '-' + day;
+
+    console.log(dateString);
+
    const selectedMovie = (m) => () => {
     if(movie.length <=2 ) {
         if(winners.length ===0) {
             setDisplays([m]);
             console.log(m)
             setTop(true);
-            dispatch(addWinner(m));
+            dispatch(addWinner([...m, dateString]));
         } else {
             let updateMovie = [...winners, m];
             setMovie(updateMovie);

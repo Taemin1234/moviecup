@@ -5,7 +5,8 @@ const winnerSlice = createSlice({
   initialState : [],
   reducers : {
     addWinner(state, action) {   
-        return state = action.payload
+        // return state = action.payload
+        return [...action.payload]
     }
   }
 })
