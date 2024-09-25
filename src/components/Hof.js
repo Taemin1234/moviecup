@@ -3,6 +3,7 @@ import * as MI from '../style/style'
 
 const Hof = () => {
     let winner = useSelector((state) => state.winner)
+    console.log(winner)
 
     return (
         <MI.Container>
@@ -10,14 +11,13 @@ const Hof = () => {
                 {winner.map(w => {
                     return (
                         <MI.Box>
-                            <p>{w[11]}</p>
+                            <p>{w[14]}</p>
                             <img src={`https://image.tmdb.org/t/p/w200/${w[8]}`} alt={w[10]} />
                             <p>{w[10]}</p>
                         </MI.Box>
                     )
                 })}
             </MI.BoxWrap4Col>
-            {winner}   
         </MI.Container>
     )
 }
