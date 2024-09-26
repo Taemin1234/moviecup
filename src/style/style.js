@@ -365,6 +365,7 @@ export const FlexWrap = styled.div`
 
 export const SelectMbox = styled.a`
     display: block;
+    min-width: 400px;
     flex: 1;
     text-align: center;
 

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect, useState } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useSelector, useDispatch } from 'react-redux';
 import * as MI from '../style/style'
@@ -14,6 +14,11 @@ const MovieInfo = () => {
     let start_year = useSelector((state) => state.year.startYear)
     let end_year = useSelector((state) => state.year.endYear)
     let with_original_language = useSelector((state) => state.language)
+
+    console.log(with_genres)
+    console.log(start_year)
+    console.log(end_year)
+    console.log(with_original_language)
 
     const dispatch = useDispatch();
 
