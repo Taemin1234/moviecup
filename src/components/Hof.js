@@ -8,10 +8,10 @@ const Hof = () => {
     return (
         <MI.Container>
             <MI.BoxWrap4Col>
-                {winner.map(w => {
+                {winner.map((w, i) => {
                     return (
-                        <MI.Box>
-                            <p>{w[14]}</p>
+                        <MI.Box key={i}>
+                            <h3>{w[14]}</h3>
                             <img src={`https://image.tmdb.org/t/p/w200/${w[8]}`} alt={w[10]} />
                             <p>{w[10]}</p>
                         </MI.Box>

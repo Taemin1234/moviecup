@@ -219,6 +219,15 @@ export const BoxWrap = styled.div`
 `;
 export const BoxWrap4Col = styled(BoxWrap)`
     grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    ${Box} {
+        align-items: center;
+        flex-direction: column;
+
+        h3 {
+            font-size: 25px;
+        }
+    }
 `
 
 export const Text1 = styled.p`

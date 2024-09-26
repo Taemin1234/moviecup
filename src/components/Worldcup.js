@@ -58,9 +58,9 @@ const Worldcup = ({closeModal}) => {
     if(movie.length <=2 ) {
         if(winners.length ===0) {
             setDisplays([m]);
-            console.log(m)
             setTop(true);
             let mDate = [...m, dateString]
+            console.log(mDate)
             dispatch(addWinner([mDate]));
         } else {
             let updateMovie = [...winners, m];
@@ -73,7 +73,6 @@ const Worldcup = ({closeModal}) => {
         setDisplays([movie[2],movie[3]])
         setMovie(movie.slice(2))
     }
-    // console.log(m[10])
    }
 
     return (
@@ -84,6 +83,7 @@ const Worldcup = ({closeModal}) => {
                     <MI.Title>영화 월드컵</MI.Title>
                     <MI.SubTitle>{movie.length} / {movie.length + winners.length * 2}</MI.SubTitle>
                 </MI.TitleWrap>
+                {top ? <MI.Buttons bg='#ffd08b' margin='10px auto'>우승!!</MI.Buttons> : null}
                 <MI.FlexWrap>
                     {displays.map(dp => {
                         return (
@@ -94,7 +94,6 @@ const Worldcup = ({closeModal}) => {
                         )
                     })}
                 </MI.FlexWrap>
-                {top ? <div>우승!!</div> : null}
             </MI.MoviecupCont>
             {top && <Confetti />}
         </MI.ModalWrap>
