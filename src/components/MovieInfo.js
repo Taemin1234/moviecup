@@ -59,7 +59,6 @@ const MovieInfo = () => {
 
     const list = data?.pages.flatMap(page => page.results) ?? [];
 
-    // console.log(list);
     
     //월드컵을 위한 16개 데이터를 뽑기
     useEffect(() => {
@@ -85,11 +84,11 @@ const MovieInfo = () => {
 
     //데이터를 불러오는 동안 로딩 상태 처리 (옵셔녈 체이닝으로 가능)
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div>로딩중...</div>;
     }
 
     if (isError) {
-        return <div>Error...</div>;
+        return <div>에러중...</div>;
     }
 
     return (

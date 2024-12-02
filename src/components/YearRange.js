@@ -4,8 +4,8 @@ import * as MI from '../style/style'
 import Radio from '../layout/Radio'
 
 const YearRange = ({setGetYear}) => {
-    const [startYear, setStartYear] = useState('');
-    const [endYear, setEndYear] = useState('');
+    const [startYear, setStartYear] = useState('1900');
+    const [endYear, setEndYear] = useState('2024');
     // 연도 목록 생성
     const currentYear = new Date().getFullYear();
     const years = [];
