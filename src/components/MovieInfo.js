@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useCallback, useEffect, useMemo } from "react";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useSelector, useDispatch } from 'react-redux';
 import * as MI from '../style/style'
@@ -57,7 +57,10 @@ const MovieInfo = () => {
         if (node) observerElem.current.observe(node);
     }, [isLoading, isFetchingNextPage, fetchNextPage, hasNextPage]);
 
-    const list = data?.pages.flatMap(page => page.results) ?? [];
+    const list = useMemo(() => {
+        const results = data?.pages?.flatMap(page => page?.results ?? []) ?? [];
+        return results.filter(Boolean);
+      }, [data]);
 
     
     //월드컵을 위한 16개 데이터를 뽑기
@@ -79,16 +82,58 @@ const MovieInfo = () => {
         }
 
         
-    }, [list]); // list가 변경될 때만 실행
+    }, [list, dispatch]); // list가 변경될 때만 실행
 
 
     //데이터를 불러오는 동안 로딩 상태 처리 (옵셔녈 체이닝으로 가능)
     if (isLoading) {
-        return <div>로딩중...</div>;
+        return (
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '300px',
+                flexDirection: 'column',
+                gap: '15px',
+                color: '#c0c0c0'
+            }}>
+                <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '3px solid #4a5568',
+                    borderTop: '3px solid #fff',
+                    borderRadius: '50%',
+                    animation: 'spin 0.8s linear infinite'
+                }}></div>
+                <p style={{ fontSize: '16px' }}>로딩중...</p>
+                <style>{`
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                `}</style>
+            </div>
+        );
     }
 
     if (isError) {
-        return <div>에러중...</div>;
+        return (
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '300px',
+                flexDirection: 'column',
+                gap: '15px',
+                padding: '30px',
+                background: 'rgba(54, 54, 54, 0.5)',
+                borderRadius: '12px',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+                <p style={{ fontSize: '18px', color: '#ff6b6b', fontWeight: 600 }}>⚠️ 오류가 발생했습니다</p>
+                <p style={{ fontSize: '14px', color: '#c0c0c0' }}>잠시 후 다시 시도해주세요</p>
+            </div>
+        );
     }
 
     return (
@@ -123,7 +168,27 @@ const MovieInfo = () => {
                     );
                 }
             })}
-            {isFetchingNextPage && <div>Loading more...</div>}
+            {isFetchingNextPage && (
+                <div style={{
+                    gridColumn: '1 / -1',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '20px',
+                    gap: '12px',
+                    color: '#c0c0c0'
+                }}>
+                    <div style={{
+                        width: '30px',
+                        height: '30px',
+                        border: '2px solid #4a5568',
+                        borderTop: '2px solid #fff',
+                        borderRadius: '50%',
+                        animation: 'spin 0.8s linear infinite'
+                    }}></div>
+                    <p style={{ fontSize: '14px' }}>더 많은 영화를 불러오는 중...</p>
+                </div>
+            )}
         </MI.BoxWrap>
     );
 };

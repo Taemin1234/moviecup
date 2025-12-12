@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const currentYear = new Date().getFullYear();
+
 const yearSlice = createSlice({
   name : 'year',
   initialState : {
     startYear : 1900,
-    endYear : 2024
+    endYear : currentYear
   },
   reducers : {
     addStartYear(state, action) {   

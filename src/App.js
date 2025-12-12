@@ -14,14 +14,28 @@ const GlobalStyle = createGlobalStyle`
 // reset css 적용
   ${reset}
   /* 이곳에 추가적인 전역 스타일을 설정 가능 */
+  * {
+    box-sizing: border-box;
+  }
+
   a {
     text-decoration: none;
     color: #fff;
+    transition: opacity 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 0.8;
   }
 
   body {
     background-color: #0a1f44;
     color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `;
 
