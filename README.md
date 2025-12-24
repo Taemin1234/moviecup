@@ -272,42 +272,6 @@ moviecup/
 
 <br />
 
-## 🚀 설치 및 실행 방법
-
-### 1. 저장소 클론
-```bash
-git clone https://github.com/yourusername/moviecup.git
-cd moviecup
-```
-
-### 2. 의존성 설치
-```bash
-npm install
-```
-
-### 3. 환경 변수 설정
-프로젝트 루트에 `.env` 파일을 생성하고 TMDB API 키를 추가합니다:
-
-```env
-REACT_APP_API_KEY=your_tmdb_api_key_here
-```
-
-> TMDB API 키는 [The Movie Database](https://www.themoviedb.org/settings/api)에서 무료로 발급받을 수 있습니다.
-
-### 4. 개발 서버 실행
-```bash
-npm start
-```
-
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인합니다.
-
-### 5. 프로덕션 빌드
-```bash
-npm run build
-```
-
-<br />
-
 ## 🎯 핵심 학습 내용
 
 - **React Query**를 활용한 서버 상태 관리와 캐싱 전략
@@ -327,20 +291,3 @@ npm run build
 - [ ] 32강, 64강 등 다양한 토너먼트 옵션 제공
 - [ ] 영화 평점 및 리뷰 정보 추가
 - [ ] 소셜 공유 기능 (우승 결과 공유)
-
-<br />
-
-## 📝 라이선스
-
-This project is licensed under the ISC License.
-
-<br />
-
-## 👤 제작자
-
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
----
-
-⭐ 이 프로젝트가 도움이 되었다면 Star를 눌러주세요!
